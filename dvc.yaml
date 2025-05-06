@@ -21,3 +21,12 @@ stages:
     - data/processed/train.parquet
     - data/processed/validation.parquet
     - data/processed/test.parquet
+  train:
+    cmd: python3 -m src.modeling.train
+    deps:
+    - src/modeling/train.py
+    - data/processed/train.parquet
+    - data/processed/validation.parquet
+    outs:
+    - models/distilbert-imdb
+    - models/distilbert-imdb-checkpoint

@@ -18,12 +18,16 @@ classifiers = [
 dependencies = [
     "datasets>=3.5.1",
     "dvc>=3.59.2",
+    "evaluate>=0.4.3",
+    "huggingface-hub[hf-xet]>=0.30.2",
+    "ipywidgets>=8.1.7",
     "pip",
     "polars>=1.29.0",
     "python-dotenv",
     "ruff",
+    "scikit-learn>=1.6.1",
     "torch>=2.7.0",
-    "transformers>=4.51.3",
+    "transformers[torch]>=4.51.3",
 ]
 requires-python = ">3.10"
 

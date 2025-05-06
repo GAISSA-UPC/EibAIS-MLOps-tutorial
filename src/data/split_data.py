@@ -17,9 +17,9 @@ def split_data():
     validation_size = int(n_samples * VALIDATION_SPLIT)
 
     train_df = df.sample(n=train_size, with_replacement=False, seed=SEED)
-    remaining_df = df.join(train_df, on="review", how="anti")
+    remaining_df = df.join(train_df, on="text", how="anti")
     validation_df = remaining_df.sample(n=validation_size, with_replacement=False, seed=SEED)
-    test_df = remaining_df.join(validation_df, on="review", how="anti")
+    test_df = remaining_df.join(validation_df, on="text", how="anti")
 
     train_df.write_parquet(PROCESSED_DATA_DIR / "train.parquet")
     validation_df.write_parquet(PROCESSED_DATA_DIR / "validation.parquet")

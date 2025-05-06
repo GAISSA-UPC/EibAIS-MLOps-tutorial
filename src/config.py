@@ -25,3 +25,9 @@ SEED = 2025
 TRAIN_SPLIT = 0.7
 VALIDATION_SPLIT = 0.2
 TEST_SPLIT = 0.1
+
+HF_TOKEN = os.getenv("HF_TOKEN")
+if HF_TOKEN is None:
+    raise ValueError(
+        "HF_TOKEN environment variable is not set in .env file. Use dot-env-template file to create .env file."
+    )
