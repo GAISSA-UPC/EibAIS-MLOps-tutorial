@@ -5,8 +5,8 @@ stages:
     deps:
     - path: src/data/download_raw_dataset.py
       hash: md5
-      md5: 619e2e4bfd59b76b47c663d69b9074a8
-      size: 646
+      md5: 810f4f307477b783266e99604b847e57
+      size: 649
     outs:
     - path: data/raw/imdb.parquet
       hash: md5
@@ -15,18 +15,26 @@ stages:
   preprocess:
     cmd: python3 -m src.data.preprocess
     deps:
+    - path: data/raw/imdb.parquet
+      hash: md5
+      md5: 8ba8a331da61fbf65a154c374da782d1
+      size: 25169132
     - path: src/data/preprocess.py
       hash: md5
-      md5: 749ace42011c402abc93ef0674cd7b82
-      size: 1652
+      md5: e9fa264b90afb474bc978829d7418721
+      size: 1653
     outs:
     - path: data/interim/imdb_cleaned.parquet
       hash: md5
-      md5: f590dd4d933118b0b5400cd29919d52a
-      size: 25796817
+      md5: 9cfc888144a39e10dec196cbdc5b6105
+      size: 25796289
   split:
     cmd: python3 -m src.data.split_data
     deps:
+    - path: data/interim/imdb_cleaned.parquet
+      hash: md5
+      md5: 9cfc888144a39e10dec196cbdc5b6105
+      size: 25796289
     - path: src/data/split_data.py
       hash: md5
       md5: f12e9152a8711991527d92ba0ad4e90b
@@ -34,13 +42,13 @@ stages:
     outs:
     - path: data/processed/test.parquet
       hash: md5
-      md5: b30581c44516976e51dd19044aaa5996
-      size: 2569270
+      md5: db513c20ccdbdfb383ad666017ef8a1d
+      size: 2602384
     - path: data/processed/train.parquet
       hash: md5
-      md5: e834776ea35f7158a5cf976615ee7b31
-      size: 18022750
+      md5: d03975d05ccd203ab32a5ec958e49ecc
+      size: 18084502
     - path: data/processed/validation.parquet
       hash: md5
-      md5: d7fe22d3d25c0e8d6da2aa5f09415c1b
-      size: 5221118
+      md5: 778271b5e188f707859262f061ca1286
+      size: 5109993

@@ -9,12 +9,14 @@ stages:
     cmd: python3 -m src.data.preprocess
     deps:
     - src/data/preprocess.py
+    - data/raw/imdb.parquet
     outs:
     - data/interim/imdb_cleaned.parquet
   split:
     cmd: python3 -m src.data.split_data
     deps:
     - src/data/split_data.py
+    - data/interim/imdb_cleaned.parquet
     outs:
     - data/processed/train.parquet
     - data/processed/validation.parquet
