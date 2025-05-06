@@ -1,0 +1,21 @@
+stages:
+  download:
+    cmd: python3 -m src.data.download_raw_dataset
+    deps:
+    - src/data/download_raw_dataset.py
+    outs:
+    - data/raw/imdb.parquet
+  preprocess:
+    cmd: python3 -m src.data.preprocess
+    deps:
+    - src/data/preprocess.py
+    outs:
+    - data/interim/imdb_cleaned.parquet
+  split:
+    cmd: python3 -m src.data.split_data
+    deps:
+    - src/data/split_data.py
+    outs:
+    - data/processed/train.parquet
+    - data/processed/validation.parquet
+    - data/processed/test.parquet
