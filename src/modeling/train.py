@@ -1,6 +1,7 @@
 from datasets import load_dataset
 from evaluate import load
 import numpy as np
+import torch
 from transformers import (
     AutoModelForSequenceClassification,
     AutoTokenizer,
@@ -34,8 +35,14 @@ ds = load_dataset(
     },
 )
 
+device = "cuda" if torch.cuda.is_available() else "cpu"
 tokenizer = AutoTokenizer.from_pretrained("distilbert/distilbert-base-uncased")
-model = AutoModelForSequenceClassification.from_pretrained("distilbert/distilbert-base-uncased")
+
+id2label = {0: "negative", 1: "positive"}
+label2id = {"negative": 0, "positive": 1}
+model = AutoModelForSequenceClassification.from_pretrained(
+    "distilbert/distilbert-base-uncased", num_labels=2, label2id=label2id, id2label=id2label
+).to(device)
 
 tokenized_ds = ds.map(tokenize, batched=True)
 
@@ -46,6 +53,7 @@ training_args = TrainingArguments(
     per_device_train_batch_size=16,
     per_device_eval_batch_size=16,
     eval_strategy="epoch",
+    torch_compile=True,
 )
 
 data_collator = DataCollatorWithPadding(tokenizer)

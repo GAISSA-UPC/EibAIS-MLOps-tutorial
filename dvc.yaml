@@ -30,3 +30,9 @@ stages:
     outs:
     - models/distilbert-imdb
     - models/distilbert-imdb-checkpoint
+  evaluate:
+    cmd: python3 -m src.modeling.evaluate
+    deps:
+    - src/modeling/evaluate.py
+    - models/distilbert-imdb
+    - data/processed/test.parquet

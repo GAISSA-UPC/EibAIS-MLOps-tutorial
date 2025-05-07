@@ -1,2 +1,4 @@
 ROOT = /path/to/your/project/root
 PYTHONPATH = ${ROOT}
+
+HF_TOKEN = your_hugging_face_token

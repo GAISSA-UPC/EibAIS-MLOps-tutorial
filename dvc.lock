@@ -65,16 +65,32 @@ stages:
       size: 5088770
     - path: src/modeling/train.py
       hash: md5
-      md5: 2ae055a4222a37ed84f322bab0bb8bbc
-      size: 1630
+      md5: 9ab14e2f253c79f272150e979f7818e2
+      size: 1878
     outs:
     - path: models/distilbert-imdb
       hash: md5
-      md5: f30cb2c411a2776b0497246bdb5fb033.dir
-      size: 268783324
+      md5: 267dbc22d66ac42d6ba5fa687e8c4e43.dir
+      size: 268783346
       nfiles: 7
     - path: models/distilbert-imdb-checkpoint
       hash: md5
-      md5: 4031c53e7effb3d90cfea692156c3ac4.dir
-      size: 4022642291
+      md5: 1547111a220186b4f9acecd4be4f8c91.dir
+      size: 4022642403
       nfiles: 55
+  evaluate:
+    cmd: python3 -m src.modeling.evaluate
+    deps:
+    - path: data/processed/test.parquet
+      hash: md5
+      md5: fe80344fbb6c1cb5257c8e91da71f07c
+      size: 2613371
+    - path: models/distilbert-imdb
+      hash: md5
+      md5: 267dbc22d66ac42d6ba5fa687e8c4e43.dir
+      size: 268783346
+      nfiles: 7
+    - path: src/modeling/evaluate.py
+      hash: md5
+      md5: 7e6451f0642f20a55ba46abf29973138
+      size: 1121
