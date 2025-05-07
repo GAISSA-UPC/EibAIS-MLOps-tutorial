@@ -2,17 +2,7 @@ from pydantic import BaseModel, field_validator
 
 MAX_REVIEW_LENGTH = 250
 
-
-class PredictRequest(BaseModel):
-    """
-    A Pydantic model that represents the input schema for the review to be predicted.
-
-    Attributes
-    -----------
-        review (str): The review text provided by the user.
-
-    """
-
+class Review(BaseModel):
     review: str
 
     @field_validator("review")
@@ -24,13 +14,17 @@ class PredictRequest(BaseModel):
 
         Parameters
         ----------
-            input (str): The review text provided by the user.
+        input : str
+            The input review string to be validated.
         Returns
         -------
-            str: The validated review text.
+        str
+            The validated input review string.
+            
         Raises
         ------
-            ValueError: If the input review exceeds the maximum length of 250 words.
+        ValueError
+            If the input review string exceeds the maximum length.
         """
 
         if len(input.split()) > MAX_REVIEW_LENGTH:
@@ -41,6 +35,17 @@ class PredictRequest(BaseModel):
 
         return input
 
+class PredictRequest(BaseModel):
+    """
+    A Pydantic model that represents the input schema for the review to be predicted.
+
+    Attributes
+    -----------
+        reviews list[Review]: A list of Review objects containing the review text to be predicted.
+
+    """
+
+    reviews: list[Review]
 
 class PredictResponse(BaseModel):
     """

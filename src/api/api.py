@@ -27,7 +27,7 @@ def root():
 
 
 @app.post("/predict", response_model=list[PredictResponse])
-def predict_sentiment(requests: PredictRequest | list[PredictRequest]) -> list[PredictResponse]:
+def predict_sentiment(requests: PredictRequest) -> list[PredictResponse]:
     """
     Predict the sentiment of a single or multiple reviews.
 
@@ -38,30 +38,31 @@ def predict_sentiment(requests: PredictRequest | list[PredictRequest]) -> list[P
 
     Parameters
     ----------
-        requests (PredictRequest | list[PredictRequest]): A single or a list of Pydantic models
-            containing the review text(s) to be classified.
+    requests : PredictRequest
+        The input request containing the review(s) to be predicted.
+        The request is validated using Pydantic models to ensure the input format is correct.
 
     Returns
     -------
-        list[PredictResponse]: A list of Pydantic models containing the review text, predicted label,
-            and confidence score for each review.
+    list[PredictResponse]
+        A list of PredictResponse objects containing the review text, predicted label, and
+        confidence score for each review.
+
     Raises
     ------
-        HTTPException: If validation fails or an unexpected error occurs during processing.
+    HTTPException
+        If the input review(s) exceed the maximum length or if any other validation error occurs,
+        a 400 Bad Request error is raised with a detailed message.
+        If an unexpected error occurs during prediction, a 500 Internal Server Error is raised
+        with a detailed message.
     """
-    labeled_reviews = []
     try:
-        if isinstance(requests, PredictRequest):
-            out = pipeline(requests.review)[0]
-            return [PredictResponse(review=requests.review, label=out["label"], score=out["score"])]
-
-        labeled_reviews = []
-        for request in requests:
-            out = pipeline(request.review)[0]
-            labeled_reviews.append(PredictResponse(review=request.review, label=out["label"], score=out["score"]))
-
-        return labeled_reviews
-
+        reviews = [review.review for review in requests.reviews]
+        labeled_reviews = pipeline(reviews)
+        return [
+            PredictResponse(review=review, label=out["label"], score=out["score"])
+            for review, out in zip(reviews, labeled_reviews)
+        ]
     except ValidationError as exception:
         logger.error(f"Validation error: {str(exception)}")
         raise HTTPException(status_code=400, detail=f"Validation Error: {str(exception)}")
