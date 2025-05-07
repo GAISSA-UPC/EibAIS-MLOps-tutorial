@@ -19,6 +19,7 @@ dependencies = [
     "datasets>=3.5.1",
     "dvc>=3.59.2",
     "evaluate>=0.4.3",
+    "fastapi>=0.115.12",
     "huggingface-hub[hf-xet]>=0.30.2",
     "ipywidgets>=8.1.7",
     "pip",
@@ -27,7 +28,10 @@ dependencies = [
     "ruff",
     "scikit-learn>=1.6.1",
     "torch>=2.7.0",
+    "tqdm>=4.67.1",
     "transformers[torch]>=4.51.3",
+    "typer>=0.15.3",
+    "uvicorn[standard]>=0.34.2",
 ]
 requires-python = ">3.10"
 
@@ -67,5 +71,6 @@ force-sort-within-sections = true
 [dependency-groups]
 dev = [
     "ipykernel>=6.29.5",
+    "loguru>=0.7.3",
     "pre-commit>=4.2.0",
 ]
