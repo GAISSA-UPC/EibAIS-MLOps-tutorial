@@ -4,7 +4,7 @@
     <img src="https://img.shields.io/badge/CCDS-Project%20template-328F97?logo=cookiecutter" />
 </a>
 
-This is a toy project to demonstrate the use of MLOps practices in ML projects.
+This is a toy project to demonstrate the use of MLOps practices in ML projects used in the tutorial [Software Engineering for ML Systems](https://conf.researchr.org/track/cibse-2025/cibse-2025-eibais#Tutorial-3) at the [EibAIS 2025](https://conf.researchr.org/track/cibse-2025/cibse-2025-eibais#About) school.
 
 ## Project Organization
 
@@ -17,7 +17,7 @@ This is a toy project to demonstrate the use of MLOps practices in ML projects.
 │   ├── processed      <- The final, canonical data sets for modeling.
 │   └── raw            <- The original, immutable data dump.
 │
-├── docs               <- A default mkdocs project; see www.mkdocs.org for details
+├── docs               <- Guides to implement some of the MLOps practices
 │
 ├── models             <- Trained and serialized models, model predictions, or model summaries
 │
@@ -49,3 +49,9 @@ This is a toy project to demonstrate the use of MLOps practices in ML projects.
 ```
 
 --------
+
+## Guides
+- [Data versioning with DVC](docs/dvc-demo.md)
+- [Experiment tracking with MLflow](docs/mlflow-demo.md)
+- [Data quality with Great Expectations](docs/great-expectations-demo.md)
+- [Model deployment with FastAPI](docs/fastapi-demo.md)

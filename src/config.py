@@ -8,9 +8,7 @@ load_dotenv()
 
 root = os.getenv("ROOT")
 if root is None:
-    logger.error(
-        "PROJ_ROOT environment variable not set. Please set it in your .env file."
-    )
+    logger.error("PROJ_ROOT environment variable not set. Please set it in your .env file.")
     raise ValueError(
         "ROOT environment variable is not set in .env file. Use dot-env-template file to create .env file."
     )
@@ -33,9 +31,7 @@ TEST_SPLIT = 0.1
 
 HF_TOKEN = os.getenv("HF_TOKEN")
 if HF_TOKEN is None:
-    logger.error(
-        "HF_TOKEN environment variable not set. Please set it in your .env file."
-    )
+    logger.error("HF_TOKEN environment variable not set. Please set it in your .env file.")
     raise ValueError(
         "HF_TOKEN environment variable is not set in .env file. Use dot-env-template file to create .env file."
     )

@@ -1,7 +1,7 @@
 from fastapi import FastAPI, HTTPException
+from loguru import logger
 from pydantic import ValidationError
 from transformers import pipeline
-from loguru import logger
 
 from src.api.schemas import PredictRequest, PredictResponse
 from src.config import MODELS_DIR
@@ -61,12 +61,12 @@ def predict_sentiment(requests: PredictRequest) -> list[PredictResponse]:
         labeled_reviews = pipeline(reviews)
         return [
             PredictResponse(review=review, label=out["label"], score=out["score"])
-            for review, out in zip(reviews, labeled_reviews)
+            for review, out in zip(reviews, labeled_reviews, strict=False)
         ]
     except ValidationError as exception:
         logger.error(f"Validation error: {str(exception)}")
-        raise HTTPException(status_code=400, detail=f"Validation Error: {str(exception)}")
+        raise HTTPException(status_code=400, detail=f"Validation Error: {str(exception)}") from exception.errors()
     except Exception as exception:
         # Log the exception and return a 500 error
         logger.error(f"Unexpected error: {str(exception)}")
-        raise HTTPException(status_code=500, detail=f"Internal Server Error: {str(exception)}")
+        raise HTTPException(status_code=500, detail=f"Internal Server Error: {str(exception)}") from exception

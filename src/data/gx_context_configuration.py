@@ -1,5 +1,4 @@
 import great_expectations as gx
-from great_expectations.exceptions import DataContextError
 
 from src.config import INTERIM_DATA_DIR, ROOT_DIR
 

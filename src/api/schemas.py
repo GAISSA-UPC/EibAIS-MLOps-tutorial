@@ -2,6 +2,7 @@ from pydantic import BaseModel, field_validator
 
 MAX_REVIEW_LENGTH = 250
 
+
 class Review(BaseModel):
     review: str
 
@@ -20,7 +21,7 @@ class Review(BaseModel):
         -------
         str
             The validated input review string.
-            
+
         Raises
         ------
         ValueError
@@ -35,6 +36,7 @@ class Review(BaseModel):
 
         return input
 
+
 class PredictRequest(BaseModel):
     """
     A Pydantic model that represents the input schema for the review to be predicted.
@@ -46,6 +48,7 @@ class PredictRequest(BaseModel):
     """
 
     reviews: list[Review]
+
 
 class PredictResponse(BaseModel):
     """
