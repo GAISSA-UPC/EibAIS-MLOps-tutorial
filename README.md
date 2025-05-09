@@ -4,13 +4,12 @@
     <img src="https://img.shields.io/badge/CCDS-Project%20template-328F97?logo=cookiecutter" />
 </a>
 
-A short description of the project.
+This is a toy project to demonstrate the use of MLOps practices in ML projects.
 
 ## Project Organization
 
 ```
 ├── LICENSE            <- Open-source license if one is chosen
-├── Makefile           <- Makefile with convenience commands like `make data` or `make train`
 ├── README.md          <- The top-level README for developers using this project.
 ├── data
 │   ├── external       <- Data from third party sources.
@@ -29,32 +28,24 @@ A short description of the project.
 ├── pyproject.toml     <- Project configuration file with package metadata for 
 │                         src and configuration for tools like black
 │
-├── references         <- Data dictionaries, manuals, and all other explanatory materials.
-│
 ├── reports            <- Generated analysis as HTML, PDF, LaTeX, etc.
 │   └── figures        <- Generated graphics and figures to be used in reporting
 │
-├── requirements.txt   <- The requirements file for reproducing the analysis environment, e.g.
-│                         generated with `pip freeze > requirements.txt`
-│
-├── setup.cfg          <- Configuration file for flake8
-│
 └── src   <- Source code for use in this project.
     │
-    ├── __init__.py             <- Makes src a Python module
+    ├── config.py                       <- Store useful variables and configuration
     │
-    ├── config.py               <- Store useful variables and configuration
+    ├── data                            <- Scripts to process data                
+    │   ├── download_raw_dataset.py     <- Download raw dataset
+    │   ├── preprocess.py               <- Preprocess raw dataset
+    │   ├── split_data.py               <- Split raw dataset into train, validation, and test sets
+    │   ├── gx_context_configuration.py <- Great Expectations context configuration
+    │   └── validate_data.py            <- Validate quality of the data with Great Expectations
     │
-    ├── dataset.py              <- Scripts to download or generate data
-    │
-    ├── features.py             <- Code to create features for modeling
-    │
-    ├── modeling                
-    │   ├── __init__.py 
-    │   ├── predict.py          <- Code to run model inference with trained models          
-    │   └── train.py            <- Code to train models
-    │
-    └── plots.py                <- Code to create visualizations
+    └── modeling                
+        ├── __init__.py 
+        ├── evaluate_model.py           <- Code to evaluate the latest trained model
+        └── train.py                    <- Code to train models
 ```
 
 --------

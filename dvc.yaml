@@ -3,19 +3,32 @@ stages:
     cmd: python3 -m src.data.download_raw_dataset
     deps:
     - src/data/download_raw_dataset.py
+    - src/config.py
     outs:
     - data/raw/imdb.parquet
   preprocess:
     cmd: python3 -m src.data.preprocess
     deps:
     - src/data/preprocess.py
+    - src/config.py
     - data/raw/imdb.parquet
     outs:
+    - data/interim/imdb_cleaned.parquet
+  configure_gx:
+    cmd: python3 -m src.data.gx_context_configuration
+    deps:
+    - src/data/gx_context_configuration.py
+  validate-data:
+    cmd: python3 -m src.data.validate_data
+    deps:
+    - src/data/validate_data.py
+    - src/data/gx_context_configuration.py
     - data/interim/imdb_cleaned.parquet
   split:
     cmd: python3 -m src.data.split_data
     deps:
     - src/data/split_data.py
+    - src/config.py
     - data/interim/imdb_cleaned.parquet
     outs:
     - data/processed/train.parquet
@@ -25,14 +38,9 @@ stages:
     cmd: python3 -m src.modeling.train
     deps:
     - src/modeling/train.py
+    - src/config.py
     - data/processed/train.parquet
     - data/processed/validation.parquet
     outs:
     - models/distilbert-imdb
     - models/distilbert-imdb-checkpoint
-  evaluate:
-    cmd: python3 -m src.modeling.evaluate
-    deps:
-    - src/modeling/evaluate.py
-    - models/distilbert-imdb
-    - data/processed/test.parquet

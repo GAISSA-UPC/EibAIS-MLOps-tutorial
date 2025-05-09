@@ -1,0 +1,80 @@
+{
+  "expectations": [
+    {
+      "id": "b78cb5ee-0331-4f40-97b3-fa73d8bdd9f7",
+      "kwargs": {
+        "column": "text"
+      },
+      "meta": {},
+      "type": "expect_column_to_exist"
+    },
+    {
+      "id": "2120cb69-47e7-4604-8e73-223f1b0d465d",
+      "kwargs": {
+        "column": "text",
+        "type_": "str"
+      },
+      "meta": {},
+      "type": "expect_column_values_to_be_of_type"
+    },
+    {
+      "id": "96a93162-3b36-40f1-8683-d08da4d9e109",
+      "kwargs": {
+        "column": "text"
+      },
+      "meta": {},
+      "type": "expect_column_values_to_be_unique"
+    },
+    {
+      "id": "64e21b39-7a63-4c96-89e4-55754d793526",
+      "kwargs": {
+        "column": "text"
+      },
+      "meta": {},
+      "type": "expect_column_values_to_not_be_null"
+    },
+    {
+      "id": "ed7075e3-43e7-4941-974f-c5e69bdd09a5",
+      "kwargs": {
+        "column": "labels"
+      },
+      "meta": {},
+      "type": "expect_column_to_exist"
+    },
+    {
+      "id": "13dde315-a966-4580-8379-85cd487cf0df",
+      "kwargs": {
+        "column": "labels",
+        "type_": "int"
+      },
+      "meta": {},
+      "type": "expect_column_values_to_be_of_type"
+    },
+    {
+      "id": "1b6ae3ea-5b84-4a9d-8393-b950737e7465",
+      "kwargs": {
+        "column": "labels",
+        "value_set": [
+          0,
+          1
+        ]
+      },
+      "meta": {},
+      "type": "expect_column_values_to_be_in_set"
+    },
+    {
+      "id": "418cd43e-428b-4402-8270-283f50a2de73",
+      "kwargs": {
+        "column": "labels"
+      },
+      "meta": {},
+      "type": "expect_column_values_to_not_be_null"
+    }
+  ],
+  "id": "cb5f1301-5059-4b3f-9234-d7fd5f712092",
+  "meta": {
+    "great_expectations_version": "1.4.3"
+  },
+  "name": "imdb_reviews_data_validation",
+  "notes": null
+}

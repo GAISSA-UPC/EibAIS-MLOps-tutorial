@@ -7,7 +7,7 @@ from src.api.schemas import PredictRequest, PredictResponse
 from src.config import MODELS_DIR
 
 # Create a FastAPI instance
-app = FastAPI()
+app = FastAPI(title="IMDB Reviews API", version="1.0.0")
 
 # Load the trained model and tokenizer
 pipeline = pipeline(task="text-classification", model=MODELS_DIR / "distilbert-imdb")

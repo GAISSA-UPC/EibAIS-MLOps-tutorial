@@ -1,0 +1,18 @@
+{
+  "actions": [
+    {
+      "name": "update_data_docs",
+      "site_names": [],
+      "type": "update_data_docs"
+    }
+  ],
+  "id": "512e02d8-6c94-4306-b883-6a81a1ad4948",
+  "name": "imdb_reviews_checkpoint",
+  "result_format": "SUMMARY",
+  "validation_definitions": [
+    {
+      "id": "1e7884dc-e660-4d47-9278-d67cacf4df6a",
+      "name": "imdb_reviews_data_validator"
+    }
+  ]
+}

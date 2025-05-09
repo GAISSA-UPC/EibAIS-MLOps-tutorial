@@ -20,20 +20,25 @@ dependencies = [
     "dvc>=3.59.2",
     "evaluate>=0.4.3",
     "fastapi>=0.115.12",
+    "great-expectations>=1.4.3",
     "huggingface-hub[hf-xet]>=0.30.2",
     "ipywidgets>=8.1.7",
     "mlflow>=2.22.0",
-    "pip",
     "polars>=1.29.0",
     "python-dotenv",
-    "ruff",
     "scikit-learn>=1.6.1",
     "torch>=2.7.0",
     "torchvision>=0.22.0",
     "tqdm>=4.67.1",
-    "transformers[torch]>=4.51.3",
+    # Fix transformers version to a compatible one with mlflow
+    "transformers[torch]<=4.51.2",
     "typer>=0.15.3",
     "uvicorn[standard]>=0.34.2",
+    "loguru>=0.7.3",
+    "numpy<2.0",
+    "pydantic>=2.11.4",
+    "psutil>=7.0.0",
+    "pynvml>=12.0.0",
 ]
 requires-python = ">3.10"
 
@@ -72,7 +77,9 @@ force-sort-within-sections = true
 
 [dependency-groups]
 dev = [
+    "deptry>=0.23.0",
     "ipykernel>=6.29.5",
-    "loguru>=0.7.3",
+    "pip>=25.1.1",
     "pre-commit>=4.2.0",
+    "ruff>=0.11.8",
 ]
