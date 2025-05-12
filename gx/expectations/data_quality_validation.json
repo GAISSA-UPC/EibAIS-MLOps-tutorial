@@ -1,7 +1,7 @@
 {
   "expectations": [
     {
-      "id": "b78cb5ee-0331-4f40-97b3-fa73d8bdd9f7",
+      "id": "1f1957b6-66d2-47bb-b7b0-efb11410e9b1",
       "kwargs": {
         "column": "text"
       },
@@ -9,7 +9,7 @@
       "type": "expect_column_to_exist"
     },
     {
-      "id": "2120cb69-47e7-4604-8e73-223f1b0d465d",
+      "id": "c4f2c033-e1b7-4891-bffc-105eba431565",
       "kwargs": {
         "column": "text",
         "type_": "str"
@@ -18,7 +18,7 @@
       "type": "expect_column_values_to_be_of_type"
     },
     {
-      "id": "96a93162-3b36-40f1-8683-d08da4d9e109",
+      "id": "7ce82d9d-7a32-4e26-a652-5f13a4144cdf",
       "kwargs": {
         "column": "text"
       },
@@ -26,7 +26,7 @@
       "type": "expect_column_values_to_be_unique"
     },
     {
-      "id": "64e21b39-7a63-4c96-89e4-55754d793526",
+      "id": "c4f38a47-6876-4a2e-b5e1-ec5703a71b8b",
       "kwargs": {
         "column": "text"
       },
@@ -34,7 +34,7 @@
       "type": "expect_column_values_to_not_be_null"
     },
     {
-      "id": "ed7075e3-43e7-4941-974f-c5e69bdd09a5",
+      "id": "5a967563-154c-4971-94f8-d876ca773769",
       "kwargs": {
         "column": "labels"
       },
@@ -42,7 +42,7 @@
       "type": "expect_column_to_exist"
     },
     {
-      "id": "13dde315-a966-4580-8379-85cd487cf0df",
+      "id": "69def909-4755-4cf7-a19b-df33f8de0a6f",
       "kwargs": {
         "column": "labels",
         "type_": "int"
@@ -51,7 +51,7 @@
       "type": "expect_column_values_to_be_of_type"
     },
     {
-      "id": "1b6ae3ea-5b84-4a9d-8393-b950737e7465",
+      "id": "416e9cb3-3e75-4aca-bf13-19848515bb32",
       "kwargs": {
         "column": "labels",
         "value_set": [
@@ -63,7 +63,7 @@
       "type": "expect_column_values_to_be_in_set"
     },
     {
-      "id": "418cd43e-428b-4402-8270-283f50a2de73",
+      "id": "cd85b25f-bc9b-4165-8bd9-105502928175",
       "kwargs": {
         "column": "labels"
       },
@@ -71,10 +71,10 @@
       "type": "expect_column_values_to_not_be_null"
     }
   ],
-  "id": "cb5f1301-5059-4b3f-9234-d7fd5f712092",
+  "id": "11dc7cf6-9413-49e9-8ac3-8fda23d9d9fc",
   "meta": {
     "great_expectations_version": "1.4.3"
   },
-  "name": "imdb_reviews_data_validation",
+  "name": "data_quality_validation",
   "notes": null
 }

@@ -80,18 +80,26 @@ data_docs_sites:
       class_name: TupleFilesystemStoreBackend
       base_directory: data_docs
 fluent_datasources:
-  imdb_reviews:
+  pandas:
     type: pandas
-    id: 9fe3543e-03a9-4cf7-b611-4616f8f4dbb9
+    id: 0b2f5324-8d45-478e-a166-5c0aadb1f339
     assets:
-      imdb_reviews_parquet:
+      raw_imdb_reviews:
         type: parquet
-        id: e20ea552-9620-4b38-9920-cb43caef4da7
+        id: 4c18c0ad-215c-4002-93b5-62673b4a265f
         batch_definitions:
           imdb_reviews_data:
-            id: 04e2a19a-9769-475b-b06a-27a00f7e50c4
+            id: 7f8ac612-98ac-4db3-bef2-f7c0204b657d
             partitioner:
-        path: 
+        path: /home/santiago/Local-Projects/EibAIS-MLOps-tutorial/data/raw/imdb.parquet
+      clean_imdb_reviews:
+        type: parquet
+        id: 4bd78098-c226-4247-b92b-73407c511089
+        batch_definitions:
+          imdb_reviews_data:
+            id: 501d0f74-b30c-4939-91f1-aa89b6a89195
+            partitioner:
+        path:
           /home/santiago/Local-Projects/EibAIS-MLOps-tutorial/data/interim/imdb_cleaned.parquet
 analytics_enabled:
-data_context_id: c89bde7b-f692-4e71-b2e5-f17e4786d695
+data_context_id: f527797c-463d-4383-9809-2ee9a8279f75
