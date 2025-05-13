@@ -3,16 +3,16 @@ from loguru import logger
 from pydantic import ValidationError
 from transformers import pipeline
 
-from src.api.schemas import PredictRequest, PredictResponse
+from src.api.schemas import PredictionRequest, PredictionResponse
 from src.config import MODELS_DIR
 
 # Create a FastAPI instance
 app = FastAPI(title="IMDB Reviews API", version="1.0.0")
 
 # Load the trained model and tokenizer from local directory
-# pipeline = pipeline(task="text-classification", model=MODELS_DIR / "distilbert-imdb")
+pipeline = pipeline(task="text-classification", model=MODELS_DIR / "distilbert-imdb")
 # Load a Hugging Face model and tokenizer
-pipe = pipeline("zero-shot-classification", model="sileod/deberta-v3-base-tasksource-nli")
+# pipe = pipeline("zero-shot-classification", model="sileod/deberta-v3-base-tasksource-nli")
 
 
 # Root route to return basic information
@@ -28,8 +28,8 @@ def root():
     return {"message": "Welcome to the IMDB reviews app!"}
 
 
-@app.post("/prediction", response_model=list[PredictResponse])
-def predict_sentiment(requests: list[str]) -> list[PredictResponse]:
+@app.post("/prediction", response_model=list[PredictionResponse])
+def predict_sentiment(requests: PredictionRequest) -> list[PredictionResponse]:
     """
     Predict the sentiment of a single or multiple reviews.
 
@@ -59,15 +59,12 @@ def predict_sentiment(requests: list[str]) -> list[PredictResponse]:
         with a detailed message.
     """
     try:
-        # reviews = [review.review for review in requests.reviews]
-        labeled_reviews = pipeline(requests)
+        reviews = [review.review for review in requests.reviews]
+        labeled_reviews = pipeline(reviews)
         return [
-            PredictResponse(review=review, label=out["label"], score=out["score"])
-            for review, out in zip(requests, labeled_reviews, strict=False)
+            PredictionResponse(review=review, label=out["label"], score=out["score"])
+            for review, out in zip(reviews, labeled_reviews, strict=False)
         ]
-    except ValidationError as exception:
-        logger.error(f"Validation error: {str(exception)}")
-        raise HTTPException(status_code=400, detail=f"Validation Error: {str(exception)}") from exception.errors()
     except Exception as exception:
         # Log the exception and return a 500 error
         logger.error(f"Unexpected error: {str(exception)}")

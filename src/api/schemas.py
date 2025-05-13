@@ -30,14 +30,14 @@ class Review(BaseModel):
 
         if len(input.split()) > MAX_REVIEW_LENGTH:
             raise ValueError(
-                f"The input review exceeds with {len(input.split())} the "
+                f"the input review exceeds with {len(input.split())} the "
                 + f"maximum length of {MAX_REVIEW_LENGTH} words."
             )
 
         return input
 
 
-class PredictRequest(BaseModel):
+class PredictionRequest(BaseModel):
     """
     A Pydantic model that represents the input schema for the review to be predicted.
 
@@ -50,7 +50,7 @@ class PredictRequest(BaseModel):
     reviews: list[Review]
 
 
-class PredictResponse(BaseModel):
+class PredictionResponse(BaseModel):
     """
     A Pydantic model that represents the output schema for the review prediction.
 
