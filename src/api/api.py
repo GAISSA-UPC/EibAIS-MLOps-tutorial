@@ -9,8 +9,10 @@ from src.config import MODELS_DIR
 # Create a FastAPI instance
 app = FastAPI(title="IMDB Reviews API", version="1.0.0")
 
-# Load the trained model and tokenizer
-pipeline = pipeline(task="text-classification", model=MODELS_DIR / "distilbert-imdb")
+# Load the trained model and tokenizer from local directory
+# pipeline = pipeline(task="text-classification", model=MODELS_DIR / "distilbert-imdb")
+# Load a Hugging Face model and tokenizer
+pipe = pipeline("zero-shot-classification", model="sileod/deberta-v3-base-tasksource-nli")
 
 
 # Root route to return basic information
@@ -26,8 +28,8 @@ def root():
     return {"message": "Welcome to the IMDB reviews app!"}
 
 
-@app.post("/predict", response_model=list[PredictResponse])
-def predict_sentiment(requests: PredictRequest) -> list[PredictResponse]:
+@app.post("/prediction", response_model=list[PredictResponse])
+def predict_sentiment(requests: list[str]) -> list[PredictResponse]:
     """
     Predict the sentiment of a single or multiple reviews.
 
@@ -57,11 +59,11 @@ def predict_sentiment(requests: PredictRequest) -> list[PredictResponse]:
         with a detailed message.
     """
     try:
-        reviews = [review.review for review in requests.reviews]
-        labeled_reviews = pipeline(reviews)
+        # reviews = [review.review for review in requests.reviews]
+        labeled_reviews = pipeline(requests)
         return [
             PredictResponse(review=review, label=out["label"], score=out["score"])
-            for review, out in zip(reviews, labeled_reviews, strict=False)
+            for review, out in zip(requests, labeled_reviews, strict=False)
         ]
     except ValidationError as exception:
         logger.error(f"Validation error: {str(exception)}")

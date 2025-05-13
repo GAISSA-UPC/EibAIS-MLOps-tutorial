@@ -1,7 +1,8 @@
 from datasets import load_dataset
 from evaluate import load
 from loguru import logger
-import mlflow
+
+# import mlflow
 import numpy as np
 import torch
 from transformers import (
@@ -15,10 +16,13 @@ from transformers import (
 from src.config import MODELS_DIR, PROCESSED_DATA_DIR, SEED
 
 SPEEDUP_TRAINING = True  # Set to True to speed up training by using a smaller dataset
+SAMPLE_SIZE = 500
 
 BATCH_SIZE = 16
 EPOCHS = 1
-LEARNING_RATE = 2e-5
+LEARNING_RATE = 5e-5
+WEIGHT_DECAY = 0.00
+LR_SCHEDULER = "linear"
 HF_MODEL_NAME = "distilbert/distilbert-base-uncased"
 MODEL_NAME = "distilbert-imdb"
 
@@ -47,9 +51,8 @@ ds = load_dataset(
 
 if SPEEDUP_TRAINING:
     logger.info("Speeding up training by using a smaller dataset.")
-    # Select 1000 samples for training
-    train_ds = ds["train"].shuffle(SEED).select(range(1000)).map(tokenize, batched=True)
-    validation_ds = ds["validation"].shuffle(SEED).select(range(1000)).map(tokenize, batched=True)
+    train_ds = ds["train"].shuffle(SEED).select(range(SAMPLE_SIZE)).map(tokenize, batched=True)
+    validation_ds = ds["validation"].shuffle(SEED).select(range(SAMPLE_SIZE)).map(tokenize, batched=True)
 else:
     train_ds = ds["train"].map(tokenize, batched=True)
     validation_ds = ds["validation"].map(tokenize, batched=True)
@@ -64,6 +67,8 @@ training_args = TrainingArguments(
     eval_strategy="epoch",
     num_train_epochs=EPOCHS,
     learning_rate=LEARNING_RATE,
+    weight_decay=WEIGHT_DECAY,
+    lr_scheduler_type=LR_SCHEDULER,
     push_to_hub=False,
 )
 
@@ -86,21 +91,25 @@ trainer = Trainer(
     compute_metrics=compute_metrics,
 )
 
-mlflow.set_experiment("IMDB sentiment analysis")
-mlflow.set_system_metrics_sampling_interval(5)
-with mlflow.start_run(log_system_metrics=True) as run:
-    trainer.train()
-
+trainer.train()
 trainer.save_model(MODELS_DIR / MODEL_NAME)
 
-with mlflow.start_run(run_id=run.info.run_id, log_system_metrics=False):
-    model_info = mlflow.transformers.log_model(
-        transformers_model=str(MODELS_DIR / MODEL_NAME),
-        task="text-classification",
-        artifact_path="model",
-        registered_model_name=MODEL_NAME,
-        input_example=["This film seemed way too long even at only 75 minutes.", "I loved this movie!"],
-    )
 
-client = mlflow.MlflowClient()
-client.set_registered_model_alias(MODEL_NAME, "challenger", model_info.registered_model_version)
+# mlflow.set_experiment("IMDB sentiment analysis")
+# mlflow.set_system_metrics_sampling_interval(5)
+# with mlflow.start_run(log_system_metrics=True) as run:
+#     trainer.train()
+
+# trainer.save_model(MODELS_DIR / MODEL_NAME)
+
+# with mlflow.start_run(run_id=run.info.run_id, log_system_metrics=False):
+#     model_info = mlflow.transformers.log_model(
+#         transformers_model=str(MODELS_DIR / MODEL_NAME),
+#         task="text-classification",
+#         artifact_path="model",
+#         registered_model_name=MODEL_NAME,
+#         input_example=["This film seemed way too long even at only 75 minutes.", "I loved this movie!"],
+#     )
+
+# client = mlflow.MlflowClient()
+# client.set_registered_model_alias(MODEL_NAME, "challenger", model_info.registered_model_version)

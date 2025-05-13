@@ -1,11 +1,11 @@
 {
   "data": {
     "asset": {
-      "id": "4bd78098-c226-4247-b92b-73407c511089",
+      "id": "d33f26ce-74b7-4734-8f93-28ece0dc7119",
       "name": "clean_imdb_reviews"
     },
     "batch_definition": {
-      "id": "501d0f74-b30c-4939-91f1-aa89b6a89195",
+      "id": "5f42af5d-1c30-4c25-ad2d-34a1e2bc1a4b",
       "name": "imdb_reviews_data"
     },
     "datasource": {

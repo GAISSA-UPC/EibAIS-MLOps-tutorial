@@ -86,18 +86,18 @@ fluent_datasources:
     assets:
       raw_imdb_reviews:
         type: parquet
-        id: 4c18c0ad-215c-4002-93b5-62673b4a265f
+        id: 813598e3-1842-4498-8b8f-c94ae31d97e2
         batch_definitions:
           imdb_reviews_data:
-            id: 7f8ac612-98ac-4db3-bef2-f7c0204b657d
+            id: 340b19fe-8f9f-414d-b485-a30f58580cf3
             partitioner:
         path: /home/santiago/Local-Projects/EibAIS-MLOps-tutorial/data/raw/imdb.parquet
       clean_imdb_reviews:
         type: parquet
-        id: 4bd78098-c226-4247-b92b-73407c511089
+        id: d33f26ce-74b7-4734-8f93-28ece0dc7119
         batch_definitions:
           imdb_reviews_data:
-            id: 501d0f74-b30c-4939-91f1-aa89b6a89195
+            id: 5f42af5d-1c30-4c25-ad2d-34a1e2bc1a4b
             partitioner:
         path:
           /home/santiago/Local-Projects/EibAIS-MLOps-tutorial/data/interim/imdb_cleaned.parquet

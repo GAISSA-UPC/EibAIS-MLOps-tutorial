@@ -1,0 +1,1248 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Data documentation compiled by Great Expectations</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <title></title>
+
+
+
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.19.1/dist/bootstrap-table.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/bootstrap-table@1.19.0/dist/extensions/filter-control/bootstrap-table-filter-control.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@forevolve/bootstrap-dark@1.1.0/dist/css/bootstrap-prefers-dark.css" />
+
+    <style>
+
+
+body {
+  position: relative;
+}
+
+.container {
+  padding-top: 50px;
+}
+
+.sticky {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 90px;
+  z-index: 1;
+}
+
+.ge-section {
+  clear: both;
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+}
+
+.popover {
+  max-width: 100%;
+}
+
+.cooltip {
+  display: inline-block;
+  position: relative;
+  text-align: left;
+  cursor: pointer;
+}
+
+.cooltip .top {
+  min-width: 200px;
+  top: -6px;
+  left: 50%;
+  transform: translate(-50%, -100%);
+  padding: 10px 20px;
+  color: #FFFFFF;
+  background-color: #222222;
+  font-weight: normal;
+  font-size: 13px;
+  border-radius: 8px;
+  position: absolute;
+  z-index: 99999999 !important;
+  box-sizing: border-box;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.5);
+  display: none;
+}
+
+.cooltip:hover .top {
+  display: block;
+  z-index: 99999999 !important;
+}
+
+.cooltip .top i {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -12px;
+  width: 24px;
+  height: 12px;
+  overflow: hidden;
+}
+
+.cooltip .top i::after {
+  content: '';
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
+  background-color: #222222;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.5);
+}
+
+ul {
+  padding-inline-start: 20px;
+}
+
+.show-scrollbars {
+  overflow: auto;
+}
+
+td .show-scrollbars {
+  max-height: 80vh;
+}
+
+/*.show-scrollbars ul {*/
+/*  padding-bottom: 20px*/
+/*}*/
+
+.show-scrollbars::-webkit-scrollbar {
+  -webkit-appearance: none;
+}
+
+.show-scrollbars::-webkit-scrollbar:vertical {
+  width: 11px;
+}
+
+.show-scrollbars::-webkit-scrollbar:horizontal {
+  height: 11px;
+}
+
+.show-scrollbars::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  border: 2px solid white; /* should match background, can't be transparent */
+  background-color: rgba(0, 0, 0, .5);
+}
+
+#ge-cta-footer {
+  opacity: 0.9;
+  border-left-width: 4px
+}
+
+.carousel-caption {
+    position: relative;
+    left: 0;
+    top: 0;
+}
+
+footer {
+  position: fixed;
+  border-top: 1px solid #98989861;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 32px;
+  padding: 4px;
+  font-size: 14px;
+  text-align: right;
+  width: 100%;
+  background: white;
+  z-index: 100000;
+}
+footer a {
+  padding-right: 8px;
+  color: #ff6210;
+  font-weight: 600;
+}
+
+footer a:hover {
+    color: #bc490d;
+    text-decoration: underline;
+}
+
+/* some css overrides for dark mode*/
+@media (prefers-color-scheme: dark) {
+  .table {
+    color: #f1f1f1 !important;
+    background-color: #212529;
+  }
+  .table-bordered{
+    border: #f1f1f1;
+  }
+  .table-hover tbody tr:hover {
+    color: #f1f1f1;
+    background-color: rgba(255,255,255,.075);
+  }
+  .form-control:disabled,
+  .form-control[readonly]{
+    background-color: #343a40;
+    opacity: .8;
+  }
+
+  .bg-light {
+    background: inherit !important;
+  }
+
+  .code-snippet {
+    background: #CDCDCD !important;
+  }
+
+  .alert-secondary a {
+    color: #0062cc;
+  }
+
+  .alert-secondary a:focus, .alert-secondary a:hover{
+    color: #004fa5;
+  }
+
+  .navbar-brand a {
+    background: url('https://great-expectations-web-assets.s3.us-east-2.amazonaws.com/full_logo_dark.png') 0 0 no-repeat;
+    background-size: 228.75px 50px;
+    display: inline-block
+  }
+  .navbar-brand a img {
+    visibility:hidden
+  }
+  footer {
+    border-top: 1px solid #ffffff61;
+    background: black;
+    z-index: 100000;
+  }
+  footer a {
+    color: #ff6210;
+  }
+
+  footer a:hover {
+    color: #ff6210;
+  }
+}</style>
+    <style>/*index page*/
+.ge-index-page-site-name-title {}
+.ge-index-page-table-container {}
+.ge-index-page-table {}
+.ge-index-page-table-profiling-links-header {}
+.ge-index-page-table-expectations-links-header {}
+.ge-index-page-table-validations-links-header {}
+.ge-index-page-table-profiling-links-list {}
+.ge-index-page-table-profiling-links-item {}
+.ge-index-page-table-expectation-suite-link {}
+.ge-index-page-table-validation-links-list {}
+.ge-index-page-table-validation-links-item {}
+
+/*breadcrumbs*/
+.ge-breadcrumbs {}
+.ge-breadcrumbs-item {}
+
+/*navigation sidebar*/
+.ge-navigation-sidebar-container {}
+.ge-navigation-sidebar-content {}
+.ge-navigation-sidebar-title {}
+.ge-navigation-sidebar-link {}</style>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+<script src="https://cdn.jsdelivr.net/npm/vega-lite@4"></script>
+<script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/bootstrap-table@1.19.1/dist/bootstrap-table.min.js"></script>
+<script src="https://unpkg.com/bootstrap-table@1.19.1/dist/extensions/filter-control/bootstrap-table-filter-control.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+
+
+
+
+
+
+<link rel="shortcut icon" href="../../../static/images/favicon.ico" type="image/x-icon"/>
+  </head>
+
+  <body>
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+$(function() {
+    $('button.copy-edit-command').click(function() {
+        $('.edit-command').focus();
+        $('.edit-command').select();
+        document.execCommand('copy');
+    });
+});
+</script>
+
+<div class="modal fade ge-expectation-editing-instructions-modal" tabindex="-1" role="dialog" aria-labelledby="ge-expectation-editing-instructions-modal-title"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="ge-expectation-editing-instructions-modal-title">How to Edit This Expectation Suite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" style="height: 350px">
+        <p>Expectations are best <strong>edited interactively in Jupyter notebooks</strong>.</p>
+        <p>To automatically generate a notebook that does this run:</p>
+        <div class="input-group mb-3">
+
+            <input type="text" class="form-control edit-command" readonly value="great_expectations suite edit data_quality_validation">
+
+            <div class="input-group-append">
+                <button class="btn btn-primary copy-edit-command" type="button"><i class="far fa-clipboard"></i> Copy</button>
+            </div>
+        </div>
+      <p>Once you have made your changes and <strong>run the entire notebook</strong> you can kill the notebook by pressing <strong>Ctr-C</strong> in your terminal.</p>
+      <p>Because these notebooks are generated from an Expectation Suite, these notebooks are <strong>entirely disposable</strong>.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+<nav class="navbar navbar-expand-md sticky-top border-bottom" style="height: 70px">
+  <div class="mr-auto">
+    <nav class="d-flex align-items-center">
+      <div class="float-left navbar-brand m-0 h-100">
+        <a href="../../../../index.html">
+          <img
+            class="NO-CACHE"
+            src="https://great-expectations-web-assets.s3.us-east-2.amazonaws.com/logo-long.png?d=20250513T074111.748242Z&dataContextId=f527797c-463d-4383-9809-2ee9a8279f75"
+            alt="Great Expectations"
+            style="width: auto; height: 50px"
+          />
+        </a>
+      </div>
+
+        <ol class="ge-breadcrumbs breadcrumb d-md-inline-flex bg-light ml-2 mr-0 mt-0 mb-0 pt-0 pb-0 d-none">
+            <li class="ge-breadcrumbs-item breadcrumb-item"><a href="../../../../index.html">Home</a></li>
+            <li class="ge-breadcrumbs-item breadcrumb-item active" aria-current="page">Validations / data_quality_validation / __none__ / 2025-05-13T09:41:10Z</li>
+        </ol>
+
+    </nav>
+  </div>
+</nav>
+
+      <script>
+        try {
+          if (localStorage.getItem('ge-walkthrough-modal-dismissed') !== 'true') {
+            $(".ge-walkthrough-modal").modal();
+          }
+        }
+        catch(error) {
+          $(".ge-walkthrough-modal").modal();
+          console.log(error);
+        }
+      </script>
+
+
+    <div class="container-fluid pt-4 pb-4 pl-5 pr-5">
+      <div class="row">
+        <div class="col-lg-2 col-md-2 col-sm-12 d-sm-block px-0">
+  <div class="mb-4">
+
+    <div class="col-12 p-0">
+      <h4>Expectation Validation Result</h4>
+      <p class="lead">Evaluates whether a batch of data matches expectations.</p>
+    </div>
+
+</div>
+  <div class="sticky">
+
+      <script>
+    function showAllValidations() {
+    $(".hide-succeeded-validation-target-child").parent().fadeIn();
+    $(".hide-succeeded-validation-target").fadeIn();
+    $(".hide-succeeded-validations-column-section-target-child").parent().parent().each((idx, el) => {
+      $(el).fadeIn();
+      const elId = el.id;
+      $(`a[href$=${elId}]`).fadeIn();
+    })
+  }
+
+    function hideSucceededValidations() {
+    $(".hide-succeeded-validation-target-child").parent().fadeOut();
+    $(".hide-succeeded-validation-target").fadeOut();
+    $(".hide-succeeded-validations-column-section-target-child").parent().parent().each((idx, el) => {
+      $(el).fadeOut();
+      const elId = el.id;
+      $(`a[href$=${elId}]`).fadeOut();
+    })
+  }
+</script>
+
+<div class="card mb-3">
+  <div class="card-header p-2">
+    <strong>Actions</strong>
+  </div>
+  <div class="card-body p-3">
+
+      <div class="mb-2">
+        <p class="card-text col-12 p-0 mb-1">
+          Validation Filter:
+        </p>
+        <div class="d-flex justify-content-center">
+          <div class="btn-group btn-group-toggle" data-toggle="buttons">
+            <label class="btn btn-primary active" onclick="showAllValidations()">
+              <input type="radio" name="options" id="option1" autocomplete="off" checked> Show All
+            </label>
+            <label class="btn btn-primary" onclick="hideSucceededValidations()">
+              <input type="radio" name="options" id="option2" autocomplete="off"> Failed Only
+            </label>
+          </div>
+        </div>
+      </div>
+
+
+
+        <div class="mb-2">
+          <div class="d-flex justify-content-center">
+            <button type="button" class="btn btn-warning" data-toggle="modal" data-target=".ge-expectation-editing-instructions-modal">
+              <i class="fas fa-edit"></i> How to Edit This Suite
+            </button>
+          </div>
+        </div>
+
+
+      <div class="mb-2">
+        <div class="d-flex justify-content-center">
+
+        </div>
+      </div>
+
+  </div>
+</div>
+
+
+      <div class="card d-md-block d-none" style="max-height: 75vh">
+  <div class="card-header p-2">
+    <strong>Table of Contents</strong>
+  </div>
+  <div class="card-body p-0" style="overflow: auto; height: 100%">
+    <nav id="navigation" class="rounded navbar   bg-light ge-navigation-sidebar-container p-1" style="max-height: 65vh;">
+      <ul class="nav nav-pills ge-navigation-sidebar-content col-12 p-0" style="max-height: 65vh">
+
+
+            <li class="nav-item col-12">
+              <a class="nav-link ge-navigation-sidebar-link" href="#section-1"
+               style="white-space: normal; word-break: break-all;overflow-wrap: normal;">
+                <strong>Overview</strong>
+              </a>
+            </li>
+
+
+
+            <li class="nav-item col-12">
+              <a class="nav-link ge-navigation-sidebar-link ml-1" href="#section-2"
+                 style="white-space: normal; word-break: break-all;overflow-wrap: normal;">
+                labels
+              </a>
+            </li>
+
+
+
+            <li class="nav-item col-12">
+              <a class="nav-link ge-navigation-sidebar-link ml-1" href="#section-3"
+                 style="white-space: normal; word-break: break-all;overflow-wrap: normal;">
+                text
+              </a>
+            </li>
+
+
+      </ul>
+    </nav>
+  </div>
+</div>
+
+  </div>
+</div>
+        <div class="col-md-10 col-lg-10 col-xs-12 pl-md-4 pr-md-3">
+
+          <div id="section-1" class="ge-section container-fluid mb-1 pb-1 pl-sm-3 px-0">
+    <div class="row" >
+
+
+<div id="section-1-content-block-1" class="col-12 p-0" >
+
+    <div id="section-1-content-block-1-header" class="alert alert-secondary" >
+        <div>
+
+                <h5 class="m-0" >
+                    Overview
+                </h5>
+
+        </div>
+
+
+        <div id="section-1-content-block-1-subheader" >
+
+                <span class="mb-0 mt-1" >
+                    <span class="h6" >Expectation Suite:</span> <a href="../../../../expectations/data_quality_validation.html" >data_quality_validation</a><br> Data asset: None<br> <span class="h6" >Status:</span> <i class="fas fa-times text-danger" aria-hidden="true"></i> Failed
+                </span>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<div id="section-1-content-block-2" class="col-6 table-responsive mt-1 p-1" >
+
+    <div id="section-1-content-block-2-header" >
+
+
+            <div>
+
+                <h6 class="m-0" >
+                    Statistics
+                </h6>
+
+            </div>
+
+        </div>
+
+
+
+
+<table
+  id="section-1-content-block-2-body"
+  class="table table-sm" style="margin-bottom:0.5rem !important; margin-top:0.5rem !important;"
+  data-toggle="table"
+
+>
+
+
+
+
+
+
+
+      <thead hidden>
+        <tr>
+
+
+                <th
+
+                >
+
+                </th>
+
+
+                <th
+
+                >
+
+                </th>
+
+        </tr>
+      </thead>
+
+    <tbody>
+      <tr>
+          <td id="section-1-content-block-2-cell-1-1" ><div class="show-scrollbars">Evaluated Expectations</div></td><td id="section-1-content-block-2-cell-1-2" ><div class="show-scrollbars">8</div></td></tr><tr>
+          <td id="section-1-content-block-2-cell-2-1" ><div class="show-scrollbars">Successful Expectations</div></td><td id="section-1-content-block-2-cell-2-2" ><div class="show-scrollbars">3</div></td></tr><tr>
+          <td id="section-1-content-block-2-cell-3-1" ><div class="show-scrollbars">Unsuccessful Expectations</div></td><td id="section-1-content-block-2-cell-3-2" ><div class="show-scrollbars">5</div></td></tr><tr>
+          <td id="section-1-content-block-2-cell-4-1" ><div class="show-scrollbars">Success Percent</div></td><td id="section-1-content-block-2-cell-4-2" ><div class="show-scrollbars">37.5%</div></td></tr></tbody>
+</table>
+
+</div>
+
+
+<div id="section-1-content-block-3" class="col-12 p-1" >
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="section-1-content-block-3-parent" >
+
+    <p class="m-0">
+      <a data-toggle="collapse" href="#section-1-content-block-3-collapse-body-aa7b11a5-a366-4bfe-a8dd-f548531c0eea" aria-expanded="false" aria-controls="section-1-content-block-3-collapse-body" >
+        Show more info...
+      </a>
+    </p>
+
+
+  <div id=section-1-content-block-3-collapse-body-aa7b11a5-a366-4bfe-a8dd-f548531c0eea class="card card-body collapse m-2" >
+
+
+
+
+
+      <div id="section-1-content-block-3-collapse-item-1-header" >
+
+
+            <div>
+
+                <h6 class="m-0" >
+                    Info
+                </h6>
+
+            </div>
+
+        </div>
+
+
+
+
+<table
+  id="section-1-content-block-3-collapse-item-1-body"
+  class="table table-sm" style="margin-bottom:0.5rem !important; margin-top:0.5rem !important;"
+  data-toggle="table"
+
+>
+
+
+
+
+
+
+
+      <thead hidden>
+        <tr>
+
+
+                <th
+
+                >
+
+                </th>
+
+
+                <th
+
+                >
+
+                </th>
+
+        </tr>
+      </thead>
+
+    <tbody>
+      <tr>
+          <td id="section-1-content-block-3-collapse-item-1-cell-1-1" ><div class="show-scrollbars">Great Expectations Version</div></td><td id="section-1-content-block-3-collapse-item-1-cell-1-2" ><div class="show-scrollbars">1.4.3</div></td></tr><tr>
+          <td id="section-1-content-block-3-collapse-item-1-cell-2-1" ><div class="show-scrollbars">Run Name</div></td><td id="section-1-content-block-3-collapse-item-1-cell-2-2" ><div class="show-scrollbars">__none__</div></td></tr><tr>
+          <td id="section-1-content-block-3-collapse-item-1-cell-3-1" ><div class="show-scrollbars">Run Time</div></td><td id="section-1-content-block-3-collapse-item-1-cell-3-2" ><div class="show-scrollbars">2025-05-13T09:41:10Z</div></td></tr></tbody>
+</table>
+
+
+
+      <div id="section-1-content-block-3-collapse-item-2-header" >
+
+
+            <div>
+
+                <h6 class="m-0" >
+                    Batch Markers
+                </h6>
+
+            </div>
+
+        </div>
+
+
+
+
+<table
+  id="section-1-content-block-3-collapse-item-2-body"
+  class="table table-sm" style="margin-bottom:0.5rem !important; margin-top:0.5rem !important;"
+  data-toggle="table"
+
+>
+
+
+
+
+
+
+
+      <thead hidden>
+        <tr>
+
+
+                <th
+
+                >
+
+                </th>
+
+
+                <th
+
+                >
+
+                </th>
+
+        </tr>
+      </thead>
+
+    <tbody>
+      <tr>
+          <td id="section-1-content-block-3-collapse-item-2-cell-1-1" class="pr-3" ><div class="show-scrollbars">
+                <span >
+                    <span style="word-break:break-all;" >ge_load_time</span>
+                </span>
+            </div></td><td id="section-1-content-block-3-collapse-item-2-cell-1-2" class="" ><div class="show-scrollbars">
+                <span >
+                    <span style="word-break:break-all;" >20250513T074110.554988Z</span>
+                </span>
+            </div></td></tr><tr>
+          <td id="section-1-content-block-3-collapse-item-2-cell-2-1" class="pr-3" ><div class="show-scrollbars">
+                <span >
+                    <span style="word-break:break-all;" >pandas_data_fingerprint</span>
+                </span>
+            </div></td><td id="section-1-content-block-3-collapse-item-2-cell-2-2" class="" ><div class="show-scrollbars">
+                <span >
+                    <span style="word-break:break-all;" >69ba824d96297e973816a755478b27bb</span>
+                </span>
+            </div></td></tr></tbody>
+</table>
+
+
+
+      <div id="section-1-content-block-3-collapse-item-3-header" >
+
+
+            <div>
+
+                <h6 class="m-0" >
+                    Batch Spec
+                </h6>
+
+            </div>
+
+        </div>
+
+
+
+
+<table
+  id="section-1-content-block-3-collapse-item-3-body"
+  class="table table-sm" style="margin-bottom:0.5rem !important; margin-top:0.5rem !important;"
+  data-toggle="table"
+
+>
+
+
+
+
+
+
+
+      <thead hidden>
+        <tr>
+
+
+                <th
+
+                >
+
+                </th>
+
+
+                <th
+
+                >
+
+                </th>
+
+        </tr>
+      </thead>
+
+    <tbody>
+      <tr>
+          <td id="section-1-content-block-3-collapse-item-3-cell-1-1" class="pr-3" ><div class="show-scrollbars">
+                <span >
+                    <span style="word-break:break-all;" >reader_method</span>
+                </span>
+            </div></td><td id="section-1-content-block-3-collapse-item-3-cell-1-2" class="" ><div class="show-scrollbars">
+                <span >
+                    <span style="word-break:break-all;" >read_parquet</span>
+                </span>
+            </div></td></tr><tr>
+          <td id="section-1-content-block-3-collapse-item-3-cell-2-1" class="pr-3" ><div class="show-scrollbars">
+                <span >
+                    <span style="word-break:break-all;" >reader_options</span>
+                </span>
+            </div></td><td id="section-1-content-block-3-collapse-item-3-cell-2-2" class="pt-0 pl-0 border-top-0" ><div class="show-scrollbars">
+
+
+
+<table
+  id="section-1-content-block-3-collapse-item-3-cell-2-2-content-body"
+  class="table table-sm m-0"
+  data-toggle="table"
+
+>
+
+
+
+
+
+
+
+      <thead hidden>
+        <tr>
+
+
+                <th
+
+                >
+
+                </th>
+
+
+                <th
+
+                >
+
+                </th>
+
+        </tr>
+      </thead>
+
+    <tbody>
+      <tr>
+          <td id="section-1-content-block-3-collapse-item-3-cell-2-2-content-cell-1-1" class="pr-3" ><div class="show-scrollbars">
+                <span >
+                    <span style="word-break:break-all;" >path</span>
+                </span>
+            </div></td><td id="section-1-content-block-3-collapse-item-3-cell-2-2-content-cell-1-2" class="" ><div class="show-scrollbars">
+                <span >
+                    <span style="word-break:break-all;" >/home/santiago/Local-Projects/EibAIS-MLOps-tutorial/data/raw/imdb.parquet</span>
+                </span>
+            </div></td></tr></tbody>
+</table></div></td></tr></tbody>
+</table>
+
+  </div>
+</div>
+
+</div>
+
+    </div>
+</div>
+
+          <div id="section-2" class="ge-section container-fluid mb-1 pb-1 pl-sm-3 px-0">
+    <div class="row" >
+
+
+<div id="section-2-content-block-1" class="col-12 p-0" >
+
+    <div id="section-2-content-block-1-header" class="alert alert-secondary" >
+        <div>
+
+                <h5 class="m-0" >
+                    labels
+                </h5>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<div id="section-2-content-block-2" class="ml-2 mr-2 mt-0 mb-0 table-responsive" >
+
+
+
+
+
+<table
+  id="section-2-content-block-2-body"
+  class="table"
+  data-toggle="table"
+  data-search="True" data-icon-size="sm"
+>
+
+
+
+
+
+      <thead >
+        <tr>
+
+
+                <th
+                  data-sortable="True"
+                >
+                  Status
+                </th>
+
+
+                <th
+
+                >
+                  Expectation
+                </th>
+
+
+                <th
+
+                >
+                  Observed Value
+                </th>
+
+        </tr>
+      </thead>
+
+    <tbody>
+      <tr>
+          <td id="section-2-content-block-2-cell-1-1" ><div class="show-scrollbars">
+                <span >
+                    <i class="fas fa-exclamation-triangle text-warning" ></i>
+                </span>
+            </div></td><td id="section-2-content-block-2-cell-1-2" ><div class="show-scrollbars">
+                <span >
+                    values must belong to this set: <span class="badge badge-secondary" >0</span> <span class="badge badge-secondary" >1</span>.
+                </span>
+
+                <strong class="text-danger" >
+                    <br><br><span class="badge badge-danger mb-2" >expect_column_values_to_be_in_set</span> raised an exception:<br><code >Error: The column "labels" in BatchData does not exist.</code>
+                </strong>
+
+
+
+
+
+
+
+
+
+
+
+<div id="section-2-content-block-2-cell-1-2-content-2-parent" >
+
+    <p class="m-0">
+      <a data-toggle="collapse" href="#section-2-content-block-2-cell-1-2-content-2-collapse-body-aa7b11a5-a366-4bfe-a8dd-f548531c0eea" aria-expanded="false" aria-controls="section-2-content-block-2-cell-1-2-content-2-collapse-body" >
+        Show exception traceback...
+      </a>
+    </p>
+
+
+  <div id=section-2-content-block-2-cell-1-2-content-2-collapse-body-aa7b11a5-a366-4bfe-a8dd-f548531c0eea class="collapse m-2" >
+
+
+
+
+
+
+                <code >
+                    Traceback (most recent call last):<br>  File "/home/santiago/Local-Projects/EibAIS-MLOps-tutorial/.venv/lib/python3.12/site-packages/great_expectations/execution_engine/execution_engine.py", line 534, in _process_direct_and_bundled_metric_computation_configurations<br>    metric_computation_configuration.metric_fn(  # type: ignore[misc] # F not callable<br>  File "/home/santiago/Local-Projects/EibAIS-MLOps-tutorial/.venv/lib/python3.12/site-packages/great_expectations/expectations/metrics/metric_provider.py", line 99, in inner_func<br>    return metric_fn(*args, **kwargs)<br>           ^^^^^^^^^^^^^^^^^^^^^^^^^^<br>  File "/home/santiago/Local-Projects/EibAIS-MLOps-tutorial/.venv/lib/python3.12/site-packages/great_expectations/expectations/metrics/map_metric_provider/column_condition_partial.py", line 92, in inner_func<br>    metric_domain_kwargs = get_dbms_compatible_metric_domain_kwargs(<br>                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^<br>  File "/home/santiago/Local-Projects/EibAIS-MLOps-tutorial/.venv/lib/python3.12/site-packages/great_expectations/expectations/metrics/util.py", line 685, in get_dbms_compatible_metric_domain_kwargs<br>    column_name: str | sqlalchemy.quoted_name = get_dbms_compatible_column_names(<br>                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^<br>  File "/home/santiago/Local-Projects/EibAIS-MLOps-tutorial/.venv/lib/python3.12/site-packages/great_expectations/expectations/metrics/util.py", line 755, in get_dbms_compatible_column_names<br>    _verify_column_names_exist_and_get_normalized_typed_column_names_map(<br>  File "/home/santiago/Local-Projects/EibAIS-MLOps-tutorial/.venv/lib/python3.12/site-packages/great_expectations/expectations/metrics/util.py", line 840, in _verify_column_names_exist_and_get_normalized_typed_column_names_map<br>    raise gx_exceptions.InvalidMetricAccessorDomainKwargsKeyError(<br>great_expectations.exceptions.exceptions.InvalidMetricAccessorDomainKwargsKeyError: Error: The column "labels" in BatchData does not exist.<br><br>The above exception was the direct cause of the following exception:<br><br>Traceback (most recent call last):<br>  File "/home/santiago/Local-Projects/EibAIS-MLOps-tutorial/.venv/lib/python3.12/site-packages/great_expectations/validator/validation_graph.py", line 286, in _resolve<br>    self._execution_engine.resolve_metrics(<br>  File "/home/santiago/Local-Projects/EibAIS-MLOps-tutorial/.venv/lib/python3.12/site-packages/great_expectations/execution_engine/execution_engine.py", line 280, in resolve_metrics<br>    return self._process_direct_and_bundled_metric_computation_configurations(<br>           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^<br>  File "/home/santiago/Local-Projects/EibAIS-MLOps-tutorial/.venv/lib/python3.12/site-packages/great_expectations/execution_engine/execution_engine.py", line 539, in _process_direct_and_bundled_metric_computation_configurations<br>    raise gx_exceptions.MetricResolutionError(<br>great_expectations.exceptions.exceptions.MetricResolutionError: Error: The column "labels" in BatchData does not exist.<br>
+                </code>
+
+
+  </div>
+</div></div></td><td id="section-2-content-block-2-cell-1-3" ><div class="show-scrollbars">--</div></td></tr><tr>
+          <td id="section-2-content-block-2-cell-2-1" ><div class="show-scrollbars">
+                <span >
+                    <i class="fas fa-exclamation-triangle text-warning" ></i>
+                </span>
+            </div></td><td id="section-2-content-block-2-cell-2-2" ><div class="show-scrollbars">
+                <span >
+                    values must never be null.
+                </span>
+
+                <strong class="text-danger" >
+                    <br><br><span class="badge badge-danger mb-2" >expect_column_values_to_not_be_null</span> raised an exception:<br><code >Error: The column "labels" in BatchData does not exist.</code>
+                </strong>
+
+
+
+
+
+
+
+
+
+
+
+<div id="section-2-content-block-2-cell-2-2-content-2-parent" >
+
+    <p class="m-0">
+      <a data-toggle="collapse" href="#section-2-content-block-2-cell-2-2-content-2-collapse-body-aa7b11a5-a366-4bfe-a8dd-f548531c0eea" aria-expanded="false" aria-controls="section-2-content-block-2-cell-2-2-content-2-collapse-body" >
+        Show exception traceback...
+      </a>
+    </p>
+
+
+  <div id=section-2-content-block-2-cell-2-2-content-2-collapse-body-aa7b11a5-a366-4bfe-a8dd-f548531c0eea class="collapse m-2" >
+
+
+
+
+
+
+                <code >
+                    Traceback (most recent call last):<br>  File "/home/santiago/Local-Projects/EibAIS-MLOps-tutorial/.venv/lib/python3.12/site-packages/great_expectations/execution_engine/execution_engine.py", line 534, in _process_direct_and_bundled_metric_computation_configurations<br>    metric_computation_configuration.metric_fn(  # type: ignore[misc] # F not callable<br>  File "/home/santiago/Local-Projects/EibAIS-MLOps-tutorial/.venv/lib/python3.12/site-packages/great_expectations/expectations/metrics/metric_provider.py", line 99, in inner_func<br>    return metric_fn(*args, **kwargs)<br>           ^^^^^^^^^^^^^^^^^^^^^^^^^^<br>  File "/home/santiago/Local-Projects/EibAIS-MLOps-tutorial/.venv/lib/python3.12/site-packages/great_expectations/expectations/metrics/map_metric_provider/column_condition_partial.py", line 92, in inner_func<br>    metric_domain_kwargs = get_dbms_compatible_metric_domain_kwargs(<br>                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^<br>  File "/home/santiago/Local-Projects/EibAIS-MLOps-tutorial/.venv/lib/python3.12/site-packages/great_expectations/expectations/metrics/util.py", line 685, in get_dbms_compatible_metric_domain_kwargs<br>    column_name: str | sqlalchemy.quoted_name = get_dbms_compatible_column_names(<br>                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^<br>  File "/home/santiago/Local-Projects/EibAIS-MLOps-tutorial/.venv/lib/python3.12/site-packages/great_expectations/expectations/metrics/util.py", line 755, in get_dbms_compatible_column_names<br>    _verify_column_names_exist_and_get_normalized_typed_column_names_map(<br>  File "/home/santiago/Local-Projects/EibAIS-MLOps-tutorial/.venv/lib/python3.12/site-packages/great_expectations/expectations/metrics/util.py", line 840, in _verify_column_names_exist_and_get_normalized_typed_column_names_map<br>    raise gx_exceptions.InvalidMetricAccessorDomainKwargsKeyError(<br>great_expectations.exceptions.exceptions.InvalidMetricAccessorDomainKwargsKeyError: Error: The column "labels" in BatchData does not exist.<br><br>The above exception was the direct cause of the following exception:<br><br>Traceback (most recent call last):<br>  File "/home/santiago/Local-Projects/EibAIS-MLOps-tutorial/.venv/lib/python3.12/site-packages/great_expectations/validator/validation_graph.py", line 286, in _resolve<br>    self._execution_engine.resolve_metrics(<br>  File "/home/santiago/Local-Projects/EibAIS-MLOps-tutorial/.venv/lib/python3.12/site-packages/great_expectations/execution_engine/execution_engine.py", line 280, in resolve_metrics<br>    return self._process_direct_and_bundled_metric_computation_configurations(<br>           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^<br>  File "/home/santiago/Local-Projects/EibAIS-MLOps-tutorial/.venv/lib/python3.12/site-packages/great_expectations/execution_engine/execution_engine.py", line 539, in _process_direct_and_bundled_metric_computation_configurations<br>    raise gx_exceptions.MetricResolutionError(<br>great_expectations.exceptions.exceptions.MetricResolutionError: Error: The column "labels" in BatchData does not exist.<br>
+                </code>
+
+
+  </div>
+</div></div></td><td id="section-2-content-block-2-cell-2-3" ><div class="show-scrollbars">unknown % not null</div></td></tr><tr>
+          <td id="section-2-content-block-2-cell-3-1" ><div class="show-scrollbars">
+                <span >
+                    <i class="fas fa-times text-danger" ></i>
+                </span>
+            </div></td><td id="section-2-content-block-2-cell-3-2" ><div class="show-scrollbars">
+                <span >
+                    is a required field.
+                </span>
+            </div></td><td id="section-2-content-block-2-cell-3-3" ><div class="show-scrollbars">--</div></td></tr><tr>
+          <td id="section-2-content-block-2-cell-4-1" ><div class="show-scrollbars">
+                <span >
+                    <i class="fas fa-exclamation-triangle text-warning" ></i>
+                </span>
+            </div></td><td id="section-2-content-block-2-cell-4-2" ><div class="show-scrollbars">
+                <span >
+                    values must be of type <span class="badge badge-secondary" >int</span>.
+                </span>
+
+                <strong class="text-danger" >
+                    <br><br><span class="badge badge-danger mb-2" >expect_column_values_to_be_of_type</span> raised an exception:<br><code >list index out of range</code>
+                </strong>
+
+
+
+
+
+
+
+
+
+
+
+<div id="section-2-content-block-2-cell-4-2-content-2-parent" >
+
+    <p class="m-0">
+      <a data-toggle="collapse" href="#section-2-content-block-2-cell-4-2-content-2-collapse-body-aa7b11a5-a366-4bfe-a8dd-f548531c0eea" aria-expanded="false" aria-controls="section-2-content-block-2-cell-4-2-content-2-collapse-body" >
+        Show exception traceback...
+      </a>
+    </p>
+
+
+  <div id=section-2-content-block-2-cell-4-2-content-2-collapse-body-aa7b11a5-a366-4bfe-a8dd-f548531c0eea class="collapse m-2" >
+
+
+
+
+
+
+                <code >
+                    Traceback (most recent call last):<br>  File "/home/santiago/Local-Projects/EibAIS-MLOps-tutorial/.venv/lib/python3.12/site-packages/great_expectations/validator/validator.py", line 650, in graph_validate<br>    result = expectation.metrics_validate(<br>             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^<br>  File "/home/santiago/Local-Projects/EibAIS-MLOps-tutorial/.venv/lib/python3.12/site-packages/great_expectations/expectations/expectation.py", line 1150, in metrics_validate<br>    expectation_validation_result: Union[ExpectationValidationResult, dict] = self._validate(<br>                                                                              ^^^^^^^^^^^^^^^<br>  File "/home/santiago/Local-Projects/EibAIS-MLOps-tutorial/.venv/lib/python3.12/site-packages/great_expectations/expectations/core/expect_column_values_to_be_of_type.py", line 567, in _validate<br>    actual_column_type = [<br>                         ^<br>IndexError: list index out of range<br>
+                </code>
+
+
+  </div>
+</div></div></td><td id="section-2-content-block-2-cell-4-3" ><div class="show-scrollbars">--</div></td></tr></tbody>
+</table>
+
+</div>
+
+    </div>
+</div>
+
+          <div id="section-3" class="ge-section container-fluid mb-1 pb-1 pl-sm-3 px-0">
+    <div class="row" >
+
+
+<div id="section-3-content-block-1" class="col-12 p-0" >
+
+    <div id="section-3-content-block-1-header" class="alert alert-secondary" >
+        <div>
+
+                <h5 class="m-0" >
+                    text
+                </h5>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<div id="section-3-content-block-2" class="ml-2 mr-2 mt-0 mb-0 table-responsive" >
+
+
+
+
+
+<table
+  id="section-3-content-block-2-body"
+  class="table"
+  data-toggle="table"
+  data-search="True" data-icon-size="sm"
+>
+
+
+
+
+
+      <thead >
+        <tr>
+
+
+                <th
+                  data-sortable="True"
+                >
+                  Status
+                </th>
+
+
+                <th
+
+                >
+                  Expectation
+                </th>
+
+
+                <th
+
+                >
+                  Observed Value
+                </th>
+
+        </tr>
+      </thead>
+
+    <tbody>
+      <tr>
+          <td id="section-3-content-block-2-cell-1-1" class="hide-succeeded-validation-target-child" ><div class="show-scrollbars">
+                <span >
+                    <i class="fas fa-check-circle text-success" ></i>
+                </span>
+            </div></td><td id="section-3-content-block-2-cell-1-2" ><div class="show-scrollbars">
+                <span >
+                    is a required field.
+                </span>
+            </div></td><td id="section-3-content-block-2-cell-1-3" ><div class="show-scrollbars">--</div></td></tr><tr>
+          <td id="section-3-content-block-2-cell-2-1" class="hide-succeeded-validation-target-child" ><div class="show-scrollbars">
+                <span >
+                    <i class="fas fa-check-circle text-success" ></i>
+                </span>
+            </div></td><td id="section-3-content-block-2-cell-2-2" ><div class="show-scrollbars">
+                <span >
+                    values must be of type <span class="badge badge-secondary" >str</span>.
+                </span>
+            </div></td><td id="section-3-content-block-2-cell-2-3" ><div class="show-scrollbars">0% unexpected</div></td></tr><tr>
+          <td id="section-3-content-block-2-cell-3-1" ><div class="show-scrollbars">
+                <span >
+                    <i class="fas fa-times text-danger" ></i>
+                </span>
+            </div></td><td id="section-3-content-block-2-cell-3-2" ><div class="show-scrollbars">
+                <span >
+                    values must be unique.
+                </span>
+
+                <strong class="text-danger" >
+                    <br><br>824 unexpected values found. ≈1.648% of 50000 total rows.
+                </strong>
+
+
+
+
+<table
+  id="section-3-content-block-2-cell-3-2-content-2-body"
+  class="table-bordered table-sm mt-3"
+  data-toggle="table"
+
+>
+
+
+
+
+
+      <thead >
+        <tr>
+
+
+                <th
+
+                >
+                  Sampled Unexpected Values
+                </th>
+
+        </tr>
+      </thead>
+
+    <tbody>
+      <tr>
+          <td id="section-3-content-block-2-cell-3-2-content-2-cell-1-1" ><div class="show-scrollbars">Holy freaking God all-freaking-mighty. This movie was so bad, I thought I was on drugs. In a bad way... The character acting is the poorest thing I've seen in quite some time. This movie was more akin to Lord of the G-Strings, IMHO(it's a real movie). Most of the movie appeared to be done on a horrible green screen. My favorite part was when they are in the carriage, and you can tell there's no horse. They're fleeing from alien monsters, and going about the same speed as a swift jog. Then it switches to a far-shot with a ridiculous CG horse. And the CG in general seems to be sub-par to 1992's Beyond the Mind's Eye. I mean, Come on, really. It felt like a horrible episode of Hercules, only without Kevin Sorbo there to save the day. Worst. Movie. Ever.</div></td></tr><tr>
+          <td id="section-3-content-block-2-cell-3-2-content-2-cell-2-1" ><div class="show-scrollbars">I am not so much like Love Sick as I image. Finally the film express sexual relationship of Alex, kik, Sandu their triangle love were full of intenseness, frustration and jealous, at last, Alex waked up and realized that they would not have result and future.Ending up was sad.<br /><br />The director Tudor Giurgiu was in AMC theatre on Sunday 12:00PM on 08/10/06, with us watched the movie together. After the movie he told the audiences that the purposed to create this film which was to express the sexual relationships of Romanian were kind of complicate.<br /><br />On my point of view sexual life is always complicated in everywhere, I don't feel any particular impression and effect from the movie. The love proceeding of Alex and Kiki, and Kiki and her brother Sandu were kind of next door neighborhood story.<br /><br />The two main reasons I don't like this movie are, firstly, the film didn't told us how they started to fall in love? Sounds like after Alex moved into the building which Kiki was living, then two girls are fall in love. It doesn't make sense at all. How a girl would fall in love with another girl instead of a man. Too much fragments, you need to image and connect those stories by your mind. Secondly, The whole film didn't have a scene of Alex and Kik's sexual intercourse, that 's what I was waiting for. However, it still had some parts were deserved to recommend. The "ear piercing " part was kind of interesting. Alex was willing to suffer the pain of ear piercing to appreciate kik's love. That was a touching scene which gave you a little idea of their love. Also, the scene of they were lying in the soccer field, the conversation express their loves were truthful and passionate.</div></td></tr><tr>
+          <td id="section-3-content-block-2-cell-3-2-content-2-cell-3-1" ><div class="show-scrollbars">The story and the show were good, but it was really depressing and I hate depressing movies. Ri'Chard is great. He really put on a top notch performance, and the girl who played his sister was really awesome and gorgeous. Seriously, I thought she was Carmen Electra until I saw the IMDb profile. I can't say anything bad about Peter Galleghar. He's one of my favorite actors. I love Anne Rice. I'm currently reading the Vampire Chronicles, but I'm glad I saw the movie before reading the book. This is a little too"real" for me. I prefer Lestat and Louis's witty little tiffs to the struggles of slaves. Eartha Kitt was so creepy and after her character did what she did The movie was ruined for me; I could barely stand to watch the rest of the show. (sorry for the ambiguity, but I don't want to give anything away) Sorry, but it's just not my type of show.</div></td></tr><tr>
+          <td id="section-3-content-block-2-cell-3-2-content-2-cell-4-1" ><div class="show-scrollbars">'Dead Letter Office' is a low-budget film about a couple of employees of the Australian postal service, struggling to rebuild their damaged lives. Unfortunately, the acting is poor and the links between the characters' past misfortunes and present mindsets are clumsily and over-schematically represented. What's most disappointing of all, however, is the portrayal is life in the office of the film's title: there's no mechanisation whatsoever, and it's quite impossible to ascertain what any of the staff really do for a living. Granted, part of the plot is that the office is threatened with closure, but this sort of office surely closed in the 1930s, if it ever truly existed. It's a shame, as the film's overall tone is poignant and wry, and there's some promise in the scenario: but few of the details convince. Overall, it feels the work of someone who hasn't actually experienced much of real life; a student film, with a concept and an outline, but sadly little else.</div></td></tr><tr>
+          <td id="section-3-content-block-2-cell-3-2-content-2-cell-5-1" ><div class="show-scrollbars">Awful, simply awful. It proves my theory about "star power." This is supposed to be great TV because the guy who directed (battlestar) Titanica is the same guy who directed this shlop schtock schtick about a chick. B O R I N G.<br /><br />Find something a thousand times more interesting to do - like watch your TV with no picture and no sound. 1/10 (I rated it so high b/c there aren't any negative scores in the IMDb.com rating system.)<br /><br />-Zaphoid<br /><br />PS: My theory about "star power" is: the more "star power" used in a show, the weaker the show is. (It's called an indirect proportionality: quality 1/"star power", less "sp" makes for better quality, etc. Another way to look at it is: "more is less.")<br /><br />-Z</div></td></tr><tr>
+          <td id="section-3-content-block-2-cell-3-2-content-2-cell-6-1" ><div class="show-scrollbars">God, I was bored out of my head as I watched this pilot. I had been expecting a lot from it, as I'm a huge fan of James Cameron (and not just since "Titanic", I might add), and his name in the credits I thought would be a guarantee of quality (Then again, he also wrote the leaden Strange Days..). But the thing failed miserably at grabbing my attention at any point of its almost two hours of duration. In all that time, it barely went beyond its two line synopsis, and I would be very hard pressed to try to figure out any kind of coherent plot out of all the mess of strands that went nowhere. On top of that, I don't think the acrobatics outdid even those of any regular "A-Team" episode. As for Alba, yes, she is gorgeous, of course, but the fact that she only displays one single facial expression the entire movie (pouty and surly), makes me also get bored of her "gal wit an attitude" schtick pretty soon. You can count me out of this one, Mr. Cameron!</div></td></tr><tr>
+          <td id="section-3-content-block-2-cell-3-2-content-2-cell-7-1" ><div class="show-scrollbars">I sat through almost one episode of this series and just couldn't take anymore. It felt as though I'd watched dozens of episodes already, and then it hit me.....There's nothing new here! I've heard that joke on Seinfeld, I saw someone fall like that on friends, an episode of Happy Days had almost the same storyline, ect. None of the actors are interesting here either! Some were good on other shows (not here), and others are new to a profession they should have never entered. Avoid this stinker!</div></td></tr><tr>
+          <td id="section-3-content-block-2-cell-3-2-content-2-cell-8-1" ><div class="show-scrollbars">I'm trying to picture the pitch for Dark Angel. "I'm thinking Matrix, I'm thinking Bladerunner, I'm thinking that chick that plays Faith in Angel, wearing shiny black leather - or some chick just like her, leave that one with us. Only - get this! - we'll do it without any plot, dialogue, character, decent action or budget, just some loud bangs and a hot chick in shiny black leather straddling a big throbbing bike. Fanboys dig loud bangs and hot chicks in shiny black leather straddling big throbbing bikes, right?"<br /><br />Flashy, shallow, dreary, formulaic, passionless, tedious, dull, dumb, humourless, desultory, barely competent. Live action anime without any action, or indeed any life. SF just the way Joe Fanboy likes it, in fact. :(</div></td></tr><tr>
+          <td id="section-3-content-block-2-cell-3-2-content-2-cell-9-1" ><div class="show-scrollbars">It's unlikely that anyone except those who adore silent films will appreciate any of the lyrical camera-work and busy (but scratchy) background score that accompanies this 1933 release. Although sound came into general use in 1928, there are no more than fifty words spoken to tell the story of a woman, unhappily married, who deserts her husband for a younger man after a romantic interlude in the woods.<br /><br />The most vividly photographed scene has the jealous husband giving a lift to the young man for a ride into town, proceeding to drive normally until he realizes the man is his wife's lover. In a frenzy of jealousy, he drives at top speed toward a railroad crossing but changes his mind at the last moment, losing his nerve. It's probably the most tension-filled scene in the otherwise decidedly slow-moving and obviously contrived story.<br /><br />HEDY LAMARR is given the sort of close-up treatment lavished on Marlene Dietrich by her discoverer, but her beauty had not yet been refined by the cosmeticians as they were when she was transported to Hollywood. Her performance consists mostly of looking sad and morose while mourning the loss of her marriage with only brief glimpses of a smile when she finds her true love (ARIBERT MOG), the handsome young stud who retrieves her clothes after a nude swim.<br /><br />The swimming scene is very brief, discreetly photographed, and not worth all the heat it apparently generated. The love-making scene, later on, is also artfully photographed with the sort of lyrical photography evident throughout most of the film--artfully so. More is left to the imagination with the use of symbolism--and this is the sort of thing that has others proclaiming the film is some kind of lyrical masterpiece.<br /><br />Not so. It's disappointing, primitively crude in its sound portions (including the laborious symphonic music in the background) and certainly Miss Lamarr is fortunate that Louis B. Mayer saw the film and on the basis of it, gave her a career in Hollywood. He must have seen something in her work that I didn't.<br /><br />It's apparent that this was conceived as a silent film with the camera doing all the work. The jarring "workers" scene at the conclusion goes on for too long and is a jarring intrusion where none is needed. It fails to end the film on the proper note.</div></td></tr><tr>
+          <td id="section-3-content-block-2-cell-3-2-content-2-cell-10-1" ><div class="show-scrollbars">The stranger Jack (Matthew Lillard) arrives in the studio of the crook collector of antiques Max (Vincent D'Onofrio) and tells his ambitious companion and specialist in poisons Jamie (Valeria Golino) that he is Jack's brother. Jamie does not buy his story, dominates Jack and ties him up to a chair. When Max arrives, Jack proposes US$ 100,000.00 for each one to protect him in a negotiation of the antiques "Spanish Judges" with a wealthy and dangerous collector. Max invites his stupid acquaintance Piece (Mark Boone Junior), who comes with his retarded girlfriend that believes she is from Mars, to compose the backup team. However, Jack double-crosses the collector and then he intrigues Jack, Jamie and Piece.<br /><br />The low budget "Spanish Judges" is a movie with a reasonable screenplay with an awful conclusion that wastes a good cast. Valeria Golino is astonishingly beautiful but together with the good actor Vincent D'Onofrio, they are not able to save the stupid story. Further, the scenes that are supposed to be funny unfortunately do not work, and actually they are silly and not funny. My vote is three.<br /><br />Title (Brazil): "Tudo Por Dinheiro" ("All For Money")</div></td></tr><tr>
+          <td id="section-3-content-block-2-cell-3-2-content-2-cell-11-1" ><div class="show-scrollbars">This movie had a IMDB rating of 8.1 so I expected much more from it. It starts out funny and endearing with an energy that feels spontaneous. But before the movie is half-way through, it begins to drag and everything becomes sickingly predictable. The characters in the office were delightful in the first third of the movie, but we get to know them a little too well; they become caricatures, not real people at all. This is the same story I've seen hundreds of times, only told here with slightly different circumstances. The thing is, I could stomach another predictable love story if only the dialog weren't so stale!<br /><br />The only thing that could be worse is if the characters had inconsistent and unbelievable motivations, and unfortunately that was also the case with Dead Letter Office. Hopefully this movie will end up in the Dead Movie Office soon.</div></td></tr><tr>
+          <td id="section-3-content-block-2-cell-3-2-content-2-cell-12-1" ><div class="show-scrollbars">This movie really shows its age. The print I saw was terrible due to age, but it is possible that there are better prints out there. However, this was not the major problem with the movie. The problem was that although the film was made in 1933, it was essentially a silent film with only the barest of dialog scattered (only a few sentences) in the film in the most amateur fashion. Sometimes the characters' backs were turned or they were talking with their hands over their faces--all in a pathetic attempt to obscure their lips and "cleaverly" (?) hide the fact that the film was dubbed. Well, its true that this Czech film would need to be dubbed into many languages but to do it this way was really stupid and obvious. It just looked cheap.<br /><br />Overall, the film looked low budget and silly. It's really a shame though, because there was a grain of a good story--a young woman who marries an older man who is either gay and/or has no interest in women. But in the 21st century, few people would really be willing to sit through this archaic mess. EVEN with a few glimpses of the naked (and somewhat chunky) Hedy Lamarr, it isn't worth all the fuss that accompanied the film when it debuted. Even by 1933 standards, this film was a poorly made dud. About the only interesting thing about the film is to see how different Lamarr looked in 1933 compared with the glamorous image Hollywood created when she came to America--she looks like 2 completely different people.<br /><br />It's such an incomplete looking and technically inferior film, I don't see how it has gotten such rave reviews. For technical problems alone, the movie can't rate a 10 or anything near it.</div></td></tr><tr>
+          <td id="section-3-content-block-2-cell-3-2-content-2-cell-13-1" ><div class="show-scrollbars">What was an exciting and fairly original series by Fox has degraded down to meandering tripe. During the first season, Dark Angel was on my weekly "must see" list, and not just because of Jessica Alba.<br /><br />Unfortunately, the powers-that-be over at Fox decided that they needed to "fine-tune" the plotline. Within 3 episodes of the season opener, they had totally lost me as a viewer (not even to see Jessica Alba!). I found the new characters that were added in the second season to be too ridiculous and amateurish. The new plotlines were stretching the continuity and credibility of the show too thin. On one of the second season episodes, they even had Max sleeping and dreaming - where the first season stated she biologically couldn't sleep.<br /><br />The moral of the story (the one that Hollywood never gets): If it works, don't screw with it!<br /><br />azjazz</div></td></tr><tr>
+          <td id="section-3-content-block-2-cell-3-2-content-2-cell-14-1" ><div class="show-scrollbars">When I first saw a glimpse of this movie, I quickly noticed the actress who was playing the role of Lucille Ball. Rachel York's portrayal of Lucy is absolutely awful. Lucille Ball was an astounding comedian with incredible talent. To think about a legend like Lucille Ball being portrayed the way she was in the movie is horrendous. I cannot believe out of all the actresses in the world who could play a much better Lucy, the producers decided to get Rachel York. She might be a good actress in other roles but to play the role of Lucille Ball is tough. It is pretty hard to find someone who could resemble Lucille Ball, but they could at least find someone a bit similar in looks and talent. If you noticed York's portrayal of Lucy in episodes of I Love Lucy like the chocolate factory or vitavetavegamin, nothing is similar in any way-her expression, voice, or movement.<br /><br />To top it all off, Danny Pino playing Desi Arnaz is horrible. Pino does not qualify to play as Ricky. He's small and skinny, his accent is unreal, and once again, his acting is unbelievable. Although Fred and Ethel were not similar either, they were not as bad as the characters of Lucy and Ricky.<br /><br />Overall, extremely horrible casting and the story is badly told. If people want to understand the real life situation of Lucille Ball, I suggest watching A&E Biography of Lucy and Desi, read the book from Lucille Ball herself, or PBS' American Masters: Finding Lucy. If you want to see a docudrama, "Before the Laughter" would be a better choice. The casting of Lucille Ball and Desi Arnaz in "Before the Laughter" is much better compared to this. At least, a similar aspect is shown rather than nothing.</div></td></tr><tr>
+          <td id="section-3-content-block-2-cell-3-2-content-2-cell-15-1" ><div class="show-scrollbars">Whoever wrote the screenplay for this movie obviously never consulted any books about Lucille Ball, especially her autobiography. I've never seen so many mistakes in a biopic, ranging from her early years in Celoron and Jamestown to her later years with Desi. I could write a whole list of factual errors, but it would go on for pages. In all, I believe that Lucille Ball is one of those inimitable people who simply cannot be portrayed by anyone other than themselves. If I were Lucie Arnaz and Desi, Jr., I would be irate at how many mistakes were made in this film. The filmmakers tried hard, but the movie seems awfully sloppy to me.</div></td></tr><tr>
+          <td id="section-3-content-block-2-cell-3-2-content-2-cell-16-1" ><div class="show-scrollbars">Wow, here it finally is; the action "movie" without action. In a real low-budget setting (don't miss the hilarious flying saucers flying by a few times) of a future Seattle we find a no-brain hardbody seeking to avenge her childhood.<br /><br />There is nothing even remotely original or interesting about the plot and the actors' performance is only rivalled in stupidity by the attempts to steal from other movies, mainly "Matrix" without having the money to do it right. Yes, we do get to see some running on walls and slow motion shoot-outs (45 secs approx.) but these scenes are about as cool as the stupid hardbody's attempts at making jokes about male incompetence now and then.<br /><br />And, yes, we are also served a number of leads that lead absolutely nowhere, as if the script was thought-out by the previously unseen cast while shooting the scenes.<br /><br />Believe me, it is as bad as it possibly can get. In fact, it doesn't deserve to be taken seriously, but perhaps I can make some of you not rent it and save your money.</div></td></tr><tr>
+          <td id="section-3-content-block-2-cell-3-2-content-2-cell-17-1" ><div class="show-scrollbars">You know all those letters to "Father Christmas" and "Jesus" that are sent every year? Well, it turns out that they are not actually delivered but dropped off in a half-forgotten corner of the post office to rot unless some bright spark figures out a way of posting them. As bizarre settings go, it's a winner and one which perfectly fits the strange movie that is "Dead Letter Office". Having said that, this is obviously an Australian film as opposed to a British one. If it was Royal Mail, most letters get this sort of treatment anyway. I haven't been in this flat for two years and we're still getting letters for a Mr Wang, some female priest of the Church of Latter Day I've-Never-Heard-Of-You and various catalogues for industrial equipment addressed to a plumbing company.<br /><br />"Dead Letter Office" (the name given to the place where undeliverable mail ends up) follows the story of Alice (Miranda Otto) who grows up in a seriously divided home. Writing to her absent father, she only learns in adulthood that her letters haven't been delivered for one reason or another. So, logically, she gets a job at the D.L.O. and finds herself working alongside other social rejects including the brooding Chilean immigrant Frank Lopez (George Del Hoyo). Slowly, she finds herself drawn to him but can she find out where her dad is without bringing the self-contained world of the Dead Letters Office to its knees?<br /><br />Nothing against this film but I was reminded of the god-awful Heather Graham film "Committed" while watching this. However, this is so much better than that pile of horse crap but then again, that ain't difficult. For a start, this film is much more logical. True, the metaphors are somewhat blatant and the underflowing symbolism quickly becomes a flood. But at least this is cohesive and quirky without being complete drivel. It is also well acted. Both Otto and Del Hoyo are very good as the lovers looking for something they know they'll never find while other characters are peripheral at best. Part of the trouble is that it seems to wrap up far too quickly, leaving this viewer somewhat disappointed. The other part is that when you consider Australia's draconian immigration policy (i.e. if you don't speak English, rack off!), such a story is unlikely to take place in reality. The other characters, sadly, also help to destabilise the realism by proving to be little more than odd-ball stereotypes.<br /><br />Despite that, "Dead Letter Office" is certainly something a little different. It might not be to everyone's taste but I liked it. Yes, it was hackneyed and predictable but sometimes, it's nice to watch a film without guns or violence or heavy-duty swearing and nudity (no chance of that in an Australian film). There ain't any major laughs, there's no Bullet Time and the characters are usually one-dimensional. But it's the story that counts here and while it's not earth-shattering in its magnificence, it's a pleasant enough way of passing the time. It's the movie equivalent of a Sheryl Crow CD - nice to listen to now and again but you wouldn't really miss it if it wasn't there.</div></td></tr></tbody>
+</table></div></td><td id="section-3-content-block-2-cell-3-3" ><div class="show-scrollbars">≈1.648% unexpected</div></td></tr><tr>
+          <td id="section-3-content-block-2-cell-4-1" class="hide-succeeded-validation-target-child" ><div class="show-scrollbars">
+                <span >
+                    <i class="fas fa-check-circle text-success" ></i>
+                </span>
+            </div></td><td id="section-3-content-block-2-cell-4-2" ><div class="show-scrollbars">
+                <span >
+                    values must never be null.
+                </span>
+            </div></td><td id="section-3-content-block-2-cell-4-3" ><div class="show-scrollbars">100% not null</div></td></tr></tbody>
+</table>
+
+</div>
+
+    </div>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+<footer>
+  <p>Stay current on everything GX with our newsletter <a href="https://greatexpectations.io/newsletter?utm_source=datadocs&utm_medium=product&utm_campaign=newsletter&utm_content=form">Subscribe</a></p>
+</footer>
+  </body>
+</html>
