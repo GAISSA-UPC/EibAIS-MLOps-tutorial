@@ -14,7 +14,7 @@ from transformers import (
 
 from src.config import MODELS_DIR, PROCESSED_DATA_DIR, SEED
 
-SPEEDUP_TRAINING = False  # Set to True to speed up training by using a smaller dataset
+SPEEDUP_TRAINING = True  # Set to True to speed up training by using a smaller dataset
 
 BATCH_SIZE = 16
 EPOCHS = 1
@@ -27,7 +27,7 @@ metric = load("accuracy")
 
 
 def tokenize(examples):
-    outputs = tokenizer(examples["text"], truncation=True)
+    outputs = tokenizer(examples["text"], truncation=True, max_length=512)
     return outputs
 
 
